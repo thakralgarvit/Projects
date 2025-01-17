@@ -1,0 +1,24 @@
+{
+  "name": "airbnb_miniapp",
+  "version": "1.0.0",
+  "description": "this is a mini project of a popular website and that is AIRBNB. It will lack a lot of feature but ill keep on updating it.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thakralgarvit/Projects.git#main"
+  },
+  "author": "Garvit Thakral",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thakralgarvit/Projects/issues"
+  },
+  "homepage": "https://github.com/thakralgarvit/Projects/tree/main#readme",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "mongoose": "^8.9.5"
+  }
+}
