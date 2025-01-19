@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wander Lust</title>
-</head>
+<% layout("/layout/boilerplate") %>
 <body>
     <h2>Listing Details:</h2>
     <ul>
@@ -13,7 +7,10 @@
         <li>&#8377; <%= listing.price.toLocaleString("en-IN") %></li>
         <li><%= listing.location %></li>
         <li><%= listing.country %></li>
-        
+        <a href="/listing/<%= listing._id %>/edit"><button>Edit</button></a>
     </ul>
+    <form method="post" action="/listing/<%= listing._id %>?_method=Delete">
+        <button>Delete</button>
+    </form>
+    
 </body>
-</html>

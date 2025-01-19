@@ -1,19 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wander Lust</title>
-</head>
+<% layout("/layout/boilerplate") %>
 <body>
     <h2>All Listing:</h2>
-    <form method="get" action="/listing/new">
+    <!-- <form method="get" action="/listing/new">    // no longer nedded as new navbar has been placed with this link
         <button>Create New Listing</button>
-    </form>
+    </form> -->
+    
+    <% for (listing of allListing) { %>
+    <div class="card" style="width: 18rem;">
+        <img src="<%= listing.image.url %>" class="card-img-top" alt="...">
+        <div class="card-body">
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+    </div>
+    <% } %>
+    
+    
+    
+    
+    
     <ul>
         <% for (listing of allListing) { %>
-            <li><a href="/listing/<%= listing._id %>"> <%= listing.title %></li>
+            <li><a href="/listing/<%= listing._id %>"> <%= listing.title %></a></li>
         <% } %>
     </ul>
 </body>
-</html>
