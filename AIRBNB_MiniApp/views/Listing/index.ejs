@@ -1,26 +1,28 @@
 <% layout("/layout/boilerplate") %>
 <body>
-    <h2>All Listing:</h2>
-    <!-- <form method="get" action="/listing/new">    // no longer nedded as new navbar has been placed with this link
-        <button>Create New Listing</button>
-    </form> -->
-    
-    <% for (listing of allListing) { %>
-    <div class="card" style="width: 18rem;">
-        <img src="<%= listing.image.url %>" class="card-img-top" alt="...">
+  <h2>All Listing:</h2>
+
+  <a href="/listing/<%= listing._id %>" class="listingLink">
+    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
+      <% for (listing of allListing) { %>
+      <div class="card col" style="width: 20rem">
+        <img src="<%= listing.image.url %>" class="card-img-top" alt="..." />
+        <div class="card-img-overlay"></div>
         <div class="card-body">
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <p class="card-text">
+            <b><%= listing.title %></b><br />
+            <span class="card-text-p"><%= listing.description %></span><br />
+            &#8377; <%= listing.price.toLocaleString("en-IN") %>/night<br />
+          </p>
         </div>
+      </div>
+      <% } %>
     </div>
-    <% } %>
-    
-    
-    
-    
-    
-    <ul>
-        <% for (listing of allListing) { %>
-            <li><a href="/listing/<%= listing._id %>"> <%= listing.title %></a></li>
-        <% } %>
-    </ul>
+  </a>
+
+  <li><a href="/listing/"> <%= listing.title %></a></li>
+
+  <ul>
+    <% for (listing of allListing) { %> <% } %>
+  </ul>
 </body>

@@ -14,61 +14,64 @@ app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 app.engine("ejs", ejsMate);
 app.use(express.static(path.join(__dirname, "/public")));
+app.use(express.json());
 
-main().then(() => {
+main()
+  .then(() => {
     console.log("connected to DB");
-})
-.catch((err) => {
-    console.log("err while connecting to DB")
-});
+  })
+  .catch((err) => {
+    console.log("err while connecting to DB");
+  });
 async function main() {
-    await mongoose.connect(mongoUrl);
+  await mongoose.connect(mongoUrl);
 }
 
 //index Route
 app.get("/listing", async (req, res) => {
-    const allListing = await Listing.find({});
-    res.render("./Listing/index.ejs", { allListing });
+  const allListing = await Listing.find({});
+  res.render("./Listing/index.ejs", { allListing });
 });
 
 //new route
 app.get("/listing/new", (req, res) => {
-    res.render("./listing/new.ejs");
+  res.render("./listing/new.ejs");
 });
 
-//show route 
+//show route
 app.get("/listing/:id", async (req, res) => {
-    let { id } = req.params;
-    let listing = await Listing.findById(id);
-    res.render("./listing/show.ejs", { listing });
+  let { id } = req.params;
+  let { listing } = await Listing.findById(id);
+  console.log(listing);
+  res.render("./listing/show.ejs", { listing });
 });
 
-app.post("/listing", async (req,res) => {
-    const newListing = new Listing(req.body.listing);
-    await newListing.save();
-    res.redirect("/listing");
+app.post("/listing", async (req, res) => {
+  const newListing = new Listing(req.body.listing);
+  await newListing.save();
+  res.redirect("/listing");
 });
 
 //edit route
 app.get("/listing/:id/edit", async (req, res) => {
-    let { id } = req.params;
-    let listing = await Listing.findById(id);
-    res.render("./listing/edit.ejs", { listing });
+  let { id } = req.params;
+  let listing = await Listing.findById(id);
+  res.render("./listing/edit.ejs", { listing });
 });
 
 //update route
 app.put("/listing/:id", async (req, res) => {
-    let { id } = req.params;
-    await Listing.findByIdAndUpdate(id, {...req.body.listing});
-    res.redirect(`/listing/${id}`);
+  let { id } = req.params;
+  await Listing.findByIdAndUpdate(id, { ...req.body.listing });
+  res.redirect(`/listing/${id}`);
 });
 
 //delete route
 app.delete("/listing/:id", async (req, res) => {
-    let { id } = req.params;
-    let deletedListing = await Listing.findByIdAndDelete(id);
-    console.log(deletedListing);
-    res.redirect("/listing");
+  let { id } = req.params;
+  let deletedListing = await Listing.findByIdAndDelete(id);
+  console.log(deletedListing);
+  res.redirect("/listing");
 });
 
 // app.get("/testlisting", async (req, res) => {
@@ -86,9 +89,9 @@ app.delete("/listing/:id", async (req, res) => {
 // })
 
 app.get("/", (req, res) => {
-    res.send("i am Groot");
+  res.send("i am Groot");
 });
 
 app.listen(8080, () => {
-    console.log("server is listening 8080");
+  console.log("server is listening 8080");
 });
