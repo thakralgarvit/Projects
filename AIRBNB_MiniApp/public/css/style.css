@@ -59,7 +59,7 @@ body {
   border: none !important;
 }
 .card-img-top {
-  border-radius: 1rem;
+  border-radius: 1rem !important;
   width: 100% !important;
   object-fit: cover !important;
   height: 20rem !important;
@@ -69,8 +69,13 @@ body {
   padding: 0 !important;
 }
 
+.listingLink {
+  color: black !important;
+}
+
 .card-text p {
   font-weight: 400 !important ;
+
 }
 .card-text-p {
   opacity: 80%;
@@ -96,4 +101,13 @@ body {
 .add-btn {
   background-color: #fe424d !important;
   color: white !important;
+}
+
+.linebtn {
+  display: flex;
+  
+}
+
+.padbtn {
+  margin-right: 10px;
 }
