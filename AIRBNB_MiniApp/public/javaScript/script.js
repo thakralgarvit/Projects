@@ -16,3 +16,9 @@
       }, false)
     })
   })();
+
+const rangeInput = document.getElementById('ratingRange');
+const ratingValue = document.getElementById('ratingValue');
+rangeInput.addEventListener('input', () => {
+ratingValue.textContent = `Rating: ${rangeInput.value}`;
+});

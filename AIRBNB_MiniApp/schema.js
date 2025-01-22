@@ -11,3 +11,11 @@ module.exports.listingSchema = Joi.object({  // acording to the joi the schema s
         image: Joi.string().allow("", null)
     }).required() // and also inside a object there should be another object that should be required
 })
+
+
+module.exports.reviewSchema = Joi.object({
+    review: Joi.object({
+        rating: Joi.number().required().min(1).max(5),
+        comment: Joi.string().required(),
+    }).required(),
+});

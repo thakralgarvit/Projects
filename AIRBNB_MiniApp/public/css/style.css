@@ -111,3 +111,13 @@ body {
 .padbtn {
   margin-right: 10px;
 }
+
+.shado {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 18px;
+  background-color: #fff;
+}
+
+.shado:hover {
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+}
