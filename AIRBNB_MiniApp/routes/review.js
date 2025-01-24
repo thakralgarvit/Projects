@@ -6,26 +6,19 @@ const { listingSchema, reviewSchema } = require("../schema.js");
 const Listing = require("../models/listing.js");
 const Review = require("../models/rewiew.js");
 const path = require("path");
-
+const { isloggedIn, validateReview, isAuthor } = require("../middleware.js");
 
 router.use(express.json());
-
-const validateReview = (req, res, next) => {
-  let { error } = reviewSchema.validate(req.body);
-  if (error) {
-    throw new ExpressError(400, error.details[0].message);
-  } else {
-    next();
-  }
-};
 
 //review post route
 router.post(
   "/",
+  isloggedIn,
   validateReview,
   wrapAsync(async (req, res) => {
     let listing = await Listing.findById(req.params.id);
     let newReview = new Review(req.body.review);
+    newReview.author = req.user._id;
     listing.review.push(newReview);
     await newReview.save();
     await listing.save();
@@ -37,6 +30,8 @@ router.post(
 //delete review route
 router.delete(
   "/:reviewId",
+  isloggedIn,
+  isAuthor,
   wrapAsync(async (req, res) => {
     let { id, reviewId } = req.params;
 
