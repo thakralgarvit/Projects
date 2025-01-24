@@ -121,3 +121,7 @@ body {
 .shado:hover {
   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
 }
+
+.signupp {
+  color: #fe424d;
+}
