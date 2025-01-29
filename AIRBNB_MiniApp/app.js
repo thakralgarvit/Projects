@@ -1,13 +1,15 @@
+if(process.env.NODE_ENV != "production") {
+  require("dotenv").config();
+}
+
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const mongoUrl = "mongodb://127.0.0.1:27017/wonderLust";
 exports.mongoUrl = mongoUrl;
-const Listing = require("./models/listing.js");
 const path = require("path");
 const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
-const wrapAsync = require("./utils/wrapAsync.js");
 const ExpressError = require("./utils/ExpressError.js");
 const session = require("express-session");
 const flash = require("connect-flash");
@@ -65,16 +67,6 @@ app.use((req, res, next) => {
   next();
 })
 
-// app.get("/demouser", async (req, res) => {
-//   let fakeruser = new User({
-//     email: "delta@gmail.com",
-//     username: "delta101", 
-//   });
-
-//   let registeredUser = await User.register(fakeruser, "helloworld");
-//   res.send(registeredUser);
-// });
-
 app.use("/listing", listingRouter);
 app.use("/listing/:id/review", reviewRouter);
 app.use("/", userRouter);
@@ -86,10 +78,6 @@ app.all("*", (req, res, next) => {
 app.use((err, req, res, next) => {
   let { statusCode = 500, message = "something went wrong" } = err;
   res.status(statusCode).render("./listing/error.ejs", { err });
-});
-
-app.get("/", (req, res) => {
-  res.send("i am Groot");
 });
 
 app.listen(8080, () => {

@@ -11,18 +11,8 @@ const listingSchema = new Schema({
     type: String,
   },
   image: {
-    filename: {
-      type: String,
-    },
-    url: {
-      type: String,
-      default:
-        "https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg", // Default URL
-      set: (v) =>
-        v && v.trim() !== ""
-          ? v
-          : "https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg",
-    },
+    url: String,
+    filename: String,
   },
   price: {
     type: Number,
@@ -42,6 +32,21 @@ const listingSchema = new Schema({
   owner: {
     type: Schema.Types.ObjectId,
     ref: "User",
+  },
+  category: {
+    type: String,
+    enum: [
+      "trending",
+      "rooms",
+      "iconic",
+      "mountains",
+      "Castle",
+      "pool",
+      "bed&Breakfast",
+      "omg",
+      "beach",
+      "camping",
+    ],
   },
 });
 

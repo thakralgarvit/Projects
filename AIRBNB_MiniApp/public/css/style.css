@@ -75,7 +75,6 @@ body {
 
 .card-text p {
   font-weight: 400 !important ;
-
 }
 .card-text-p {
   opacity: 80%;
@@ -105,7 +104,6 @@ body {
 
 .linebtn {
   display: flex;
-  
 }
 
 .padbtn {
@@ -124,4 +122,86 @@ body {
 
 .signupp {
   color: #fe424d;
+}
+
+/* filter */
+
+#filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.filter {
+  text-align: center;
+  margin-right: 1.5rem;
+  margin-top: 1rem;
+  opacity: 0.5;
+}
+
+.filter:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.filter p {
+  font-size: 0.8rem;
+}
+
+.icoo {
+  font-size: 1.5rem;
+}
+
+.sign {
+  padding-right: 140px !important;
+}
+
+.active {
+  opacity: 1 !important;
+  scale: 1.1;
+}
+
+.tax-toggle {
+  border: 2px solid black;
+  border-radius: 1rem;
+  height: 3.5rem;
+  padding: 0.9rem;
+  margin-left: 1rem;
+  opacity: 0.7;
+  display: flex;
+  align-items: center;
+}
+
+.search-btn {
+  background-color: #fe424d !important;
+  color: white !important;
+  border-radius: 50% !important;
+  height: auto;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+.search-btn p {
+  display: none !important;
+  margin: 0 !important;
+}
+
+.search-btn:hover {
+  border-radius: 1rem !important;
+}
+
+.search-btn:hover p {
+  display: block !important;
+}
+
+.search-btn i {
+  /* Ensure icon stays centered */
+  display: flex !important;
+  align-items: center;
+}
+
+.input-btn {
+  border-radius: 25px !important;
 }

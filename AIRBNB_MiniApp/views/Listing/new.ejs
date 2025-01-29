@@ -3,16 +3,23 @@
   <div class="row mt-3">
     <div class="col-8 offset-2">
       <h2>Creat a Listing</h2>
-      <form method="post" action="/listing" novalidate class="needs-validation">
+      <form
+        method="post"
+        action="/listing"
+        novalidate
+        class="needs-validation"
+        enctype="multipart/form-data"
+      >
         <div class="mb-3">
           <lable for="title" class="form-lable">Title</lable>
-          <input type="text" name="listing[title]" class="form-control" required/>
-          <div class="valid-feedback">
-            Looks good!
-          </div>
-          <div class="invalid-feedback">
-            Please provide a valid title.
-          </div>
+          <input
+            type="text"
+            name="listing[title]"
+            class="form-control"
+            required
+          />
+          <div class="valid-feedback">Looks good!</div>
+          <div class="invalid-feedback">Please provide a valid title.</div>
         </div>
         <div class="mb-3">
           <label for="description" class="form-label">Description</label>
@@ -22,51 +29,76 @@
             class="form-control"
             required
           ></textarea>
-          <div class="valid-feedback">
-            Looks good!
-          </div>
-          <div class="invalid-feedback">
-            Please provide a message.
-          </div>
+          <div class="valid-feedback">Looks good!</div>
+          <div class="invalid-feedback">Please provide a message.</div>
         </div>
+
         <div class="mb-3">
-          <label for="image" class="form-label">Image Link</label>
-          <input type="text" name="listing[image]" class="form-control"/>
-          <div class="valid-feedback">
-            Looks good!
-          </div>
+          <label for="category" class="form-lable">Categories</label>
+          <select name="listing[category]" id="category" class="form-select">
+            <option value="rooms" data-icon="fas fa-home">Rooms</option>
+            <option value="trending" data-icon="fas fa-fire">Trending</option>
+            <option value="iconic" data-icon="fas fa-city">Iconic City</option>
+            <option value="mountains" data-icon="fas fa-mountain">
+              Mountains
+            </option>
+            <option value="castle" data-icon="fas fa-chess-rook">Castle</option>
+            <option value="pool" data-icon="fas fa-swimming-pool">Pool</option>
+            <option value="bed&Breakfast" data-icon="fas fa-bed">
+              Bed & Breakfast
+            </option>
+            <option value="omg" data-icon="fas fa-star">OMG!!</option>
+            <option value="beach" data-icon="fas fa-umbrella-beach">
+              Beachfront
+            </option>
+            <option value="camping" data-icon="fas fa-campground">
+              Camping
+            </option>
+          </select>
+          <div class="valid-feedback">Looks good!</div>
+          <div class="invalid-feedback">Please provide a valid title.</div>
+          <div id="selected-icon" class="mt-2"></div>
+        </div>
+
+        <div class="mb-3">
+          <label for="image" class="form-label">Upload Image</label>
+          <input type="file" name="listing[image]" class="form-control" />
+          <div class="valid-feedback">Looks good!</div>
         </div>
         <div class="row">
           <div class="mb-3 col-md-4">
             <label for="price" class="form-label">Price</label>
-            <input type="number" name="listing[price]" class="form-control" required/>
-            <div class="valid-feedback">
-              Looks good!
-            </div>
-            <div class="invalid-feedback">
-              Please provide a valid price.
-            </div>
+            <input
+              type="number"
+              name="listing[price]"
+              class="form-control"
+              required
+            />
+            <div class="valid-feedback">Looks good!</div>
+            <div class="invalid-feedback">Please provide a valid price.</div>
           </div>
           <div class="mb-3 col-md-8">
             <label for="country" class="form-label">Country</label>
-            <input type="text" name="listing[country]" class="form-control" required/>
-            <div class="valid-feedback">
-              Looks good!
-            </div>
-            <div class="invalid-feedback">
-              Please provide a valid country.
-            </div>
+            <input
+              type="text"
+              name="listing[country]"
+              class="form-control"
+              required
+            />
+            <div class="valid-feedback">Looks good!</div>
+            <div class="invalid-feedback">Please provide a valid country.</div>
           </div>
         </div>
         <div class="mb-3">
           <label for="location" class="form-label">Location</label>
-          <input type="text" name="listing[location]" class="form-control" required/>
-          <div class="valid-feedback">
-            Looks good!
-          </div>
-          <div class="invalid-feedback">
-            Please provide a valid location.
-          </div>
+          <input
+            type="text"
+            name="listing[location]"
+            class="form-control"
+            required
+          />
+          <div class="valid-feedback">Looks good!</div>
+          <div class="invalid-feedback">Please provide a valid location.</div>
         </div>
         <button class="btn add-btn mt-3">Submite</button>
       </form>
