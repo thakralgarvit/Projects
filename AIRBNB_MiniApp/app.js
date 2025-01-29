@@ -5,17 +5,19 @@ if(process.env.NODE_ENV != "production") {
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
-const mongoUrl = "mongodb://127.0.0.1:27017/wonderLust";
-exports.mongoUrl = mongoUrl;
 const path = require("path");
 const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
 const ExpressError = require("./utils/ExpressError.js");
 const session = require("express-session");
+const MongoStore = require("connect-mongo");
 const flash = require("connect-flash");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const User = require("./models/user.js");
+
+// const mongoUrl = "mongodb://127.0.0.1:27017/wonderLust";
+const dbUrl = process.env.ATLASDB_URL;
 
 const listingRouter = require("./routes/listing.js");
 const reviewRouter = require("./routes/review.js");
@@ -37,11 +39,24 @@ main()
     console.log("err while connecting to DB");
   });
 async function main() {
-  await mongoose.connect(mongoUrl);
+  await mongoose.connect(dbUrl);
 }
 
+const store = MongoStore.create({
+  mongoUrl: dbUrl,
+  crypto: {
+    secret: process.env.SECRET,
+  },
+  touchAfter: 86400,  //its in sec
+});
+
+store.on("error", () => {
+  console.log("error is in Mongo Session", err)
+});
+
 const sessionOptions = {
-  secret: "mysupersecretcode",
+  store,
+  secret: process.env.SECRET,
   resave: false,
   saveUninitialized: true,
   cookie: {

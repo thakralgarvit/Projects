@@ -1,4 +1,7 @@
 {
+  "engines" : {
+      "node": "22.12.0"
+  },
   "name": "airbnb_miniapp",
   "version": "1.0.0",
   "description": "this is a mini project of a popular website and that is AIRBNB. It will lack a lot of feature but ill keep on updating it.",
@@ -19,6 +22,7 @@
   "dependencies": {
     "cloudinary": "^2.5.1",
     "connect-flash": "^0.1.1",
+    "connect-mongo": "^5.1.0",
     "dotenv": "^16.4.7",
     "ejs": "^3.1.10",
     "ejs-mate": "^4.0.0",
